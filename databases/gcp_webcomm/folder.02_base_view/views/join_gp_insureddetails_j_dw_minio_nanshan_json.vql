@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE VIEW join_gp_insureddetails_j_dw_minio_nanshan_json FOLDER = '/02_base_view'
+    PRIMARY KEY ( 'policyid' , 'insuredid' ) AS SELECT insureddetails.insuredname AS insuredname, insureddetails.gender AS gender, insureddetails.dateofbirth AS dateofbirth, insureddetails.occupation AS occupation, insureddetails.address AS address, insureddetails.phone AS phone, insureddetails.email AS email, insureddetails.nationality AS nationality, insureddetails.maritalstatus AS maritalstatus, dw_minio_nanshan_json.policyid AS policyid, dw_minio_nanshan_json.insuredid AS insuredid, dw_minio_nanshan_json.policynumber AS policynumber, dw_minio_nanshan_json.policytype AS policytype, dw_minio_nanshan_json.effectivedate AS effectivedate, dw_minio_nanshan_json.expirydate AS expirydate, dw_minio_nanshan_json.paymentstatus AS paymentstatus, dw_minio_nanshan_json.coverageamount AS coverageamount, dw_minio_nanshan_json.totalpremium AS totalpremium, dw_minio_nanshan_json.insuranceproducts AS insuranceproducts FROM insureddetails AS insureddetails INNER JOIN dw_minio_nanshan_json AS dw_minio_nanshan_json ON insureddetails.insuredid = dw_minio_nanshan_json.insuredid  CONTEXT (DATAMOVEMENTPLAN = dw_minio_nanshan_json : insureddetails insureddetails : dw_minio_nanshan_json);
+
+ALTER VIEW join_gp_insureddetails_j_dw_minio_nanshan_json
+ LAYOUT (insureddetails = [196, 132, 200, 200], dw_minio_nanshan_json = [561, 129, 200, 200]);
+
+ALTER VIEW join_gp_insureddetails_j_dw_minio_nanshan_json
+ CACHE FULL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

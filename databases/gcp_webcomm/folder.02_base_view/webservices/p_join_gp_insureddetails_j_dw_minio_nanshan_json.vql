@@ -1,0 +1,41 @@
+﻿CREATE OR REPLACE REST WEBSERVICE p_join_gp_insureddetails_j_dw_minio_nanshan_json
+    CONNECTION (
+        CHUNKSIZE = 1000
+        CHUNKTIMEOUT = 1000
+        QUERYTIMEOUT = 900000
+        POOLENABLED = true
+        POOLINITSIZE = 0
+        POOLMAXACTIVE = 30
+    )
+    DEFAULTREPRESENTATION = HTML
+    SUPPORTEDREPRESENTATIONS (HTML, XML, JSON)
+    RESOURCES (
+        VIEW p_join_gp_insureddetails_j_dw_minio_nanshan_json FIELDS (
+            insuredname : 'text', 
+            gender : 'text', 
+            dateofbirth : 'timestamp' OUTPUT_ONLY, 
+            occupation : 'text', 
+            address : 'text', 
+            phone : 'text', 
+            email : 'text', 
+            nationality : 'text', 
+            maritalstatus : 'text', 
+            policyid : 'int', 
+            insuredid : 'int', 
+            policynumber : 'int', 
+            policytype : 'int', 
+            effectivedate : 'localdate', 
+            expirydate : 'localdate', 
+            paymentstatus : 'text', 
+            coverageamount : 'int', 
+            totalpremium : 'int', 
+            insuranceproducts : 'int', 
+            age : 'long'
+        )
+    )
+    OPTIONS ( NULLVALUESASEMPTYXMLELEMENTS = false
+        ALLOW_CORS_ORIGINS (*) DISABLED
+        PROCESS_FUNCTIONS_IN_SELECT_PARAMETER = true ) 
+    OPENAPI2 ( API_VERSION = '1.0.0' ) 
+    FOLDER = '/02_base_view';
+

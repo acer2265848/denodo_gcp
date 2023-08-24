@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE join_gp_insureddetails_j_dw_minio_nanshan_json;
+
+DEPLOY WEBSERVICE join_gp_insureddetails_j_dw_minio_nanshan_json LOGIN = '${databases.gcp_webcomm.webcontainer.webservices.join_gp_insureddetails_j_dw_minio_nanshan_json.LOGIN}' PASSWORD = '${databases.gcp_webcomm.webcontainer.webservices.join_gp_insureddetails_j_dw_minio_nanshan_json.PASSWORD}' ${databases.gcp_webcomm.webcontainer.webservices.join_gp_insureddetails_j_dw_minio_nanshan_json.PASSWORD.ENCRYPTED};
+

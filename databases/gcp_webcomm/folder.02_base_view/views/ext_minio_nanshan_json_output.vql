@@ -1,0 +1,83 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC ext_minio_nanshan_json_output
+    FOLDER = '/02_base_view'
+    DATASOURCENAME=gcp_greenplum
+    SCHEMANAME='${databases.gcp_webcomm.folder.02_base_view.views.jdbc.ext_minio_nanshan_json_output.SCHEMANAME}' ESCAPE
+    RELATIONNAME='ext_minio_nanshan_json_output' 
+    OUTPUTSCHEMA (
+        insuredid_0 = 'InsuredID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        insuredname = 'InsuredName' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        gender = 'Gender' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        dateofbirth = 'DateOfBirth' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  ESCAPE SORTABLE,
+        occupation = 'Occupation' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        address = 'Address' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        phone = 'Phone' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        email = 'Email' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        nationality = 'Nationality' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        maritalstatus = 'MaritalStatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        policyid = 'PolicyiD' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        insuredid = 'InsurediD' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        policynumber = 'PolicyNumber' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        policytype = 'PolicyType' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        effectivedate = 'EffectiveDate' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        expirydate = 'ExpiryDate' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        paymentstatus = 'PaymentStatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        coverageamount = 'CoverageAmount' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        totalpremium = 'TotalPremium' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        insuranceproducts = 'InsuranceProducts' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE
+    );
+
+CREATE OR REPLACE TABLE ext_minio_nanshan_json_output I18N us_est (
+        insuredid_0:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuredname:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        gender:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        dateofbirth:localdate (sourcetypeid = '91', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        occupation:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        address:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        phone:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        email:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        nationality:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        maritalstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        policyid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuredid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policynumber:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policytype:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        effectivedate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        expirydate:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        paymentstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        coverageamount:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        totalpremium:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuranceproducts:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/02_base_view'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ext_minio_nanshan_json_output(
+        I18N us_est
+        CONSTRAINTS (
+             ADD insuredid_0 (any) OPT ANY
+             ADD insuredname (any) OPT ANY
+             ADD gender (any) OPT ANY
+             ADD dateofbirth (any) OPT ANY
+             ADD occupation (any) OPT ANY
+             ADD address (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD nationality (any) OPT ANY
+             ADD maritalstatus (any) OPT ANY
+             ADD policyid (any) OPT ANY
+             ADD insuredid (any) OPT ANY
+             ADD policynumber (any) OPT ANY
+             ADD policytype (any) OPT ANY
+             ADD effectivedate (any) OPT ANY
+             ADD expirydate (any) OPT ANY
+             ADD paymentstatus (any) OPT ANY
+             ADD coverageamount (any) OPT ANY
+             ADD totalpremium (any) OPT ANY
+             ADD insuranceproducts (any) OPT ANY
+        )
+        OUTPUTLIST (address, coverageamount, dateofbirth, effectivedate, email, expirydate, gender, insuranceproducts, insuredid, insuredid_0, insuredname, maritalstatus, nationality, occupation, paymentstatus, phone, policyid, policynumber, policytype, totalpremium
+        )
+        WRAPPER (jdbc ext_minio_nanshan_json_output)
+    );
+

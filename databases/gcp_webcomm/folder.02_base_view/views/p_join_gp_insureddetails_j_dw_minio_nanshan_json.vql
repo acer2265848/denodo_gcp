@@ -1,0 +1,12 @@
+﻿CREATE OR REPLACE VIEW p_join_gp_insureddetails_j_dw_minio_nanshan_json FOLDER = '/02_base_view' (
+    age (sourcetypeid = '4')
+ )
+ AS SELECT join_gp_insureddetails_j_dw_minio_nanshan_json.insuredname AS insuredname, join_gp_insureddetails_j_dw_minio_nanshan_json.gender AS gender, join_gp_insureddetails_j_dw_minio_nanshan_json.dateofbirth AS dateofbirth, join_gp_insureddetails_j_dw_minio_nanshan_json.occupation AS occupation, join_gp_insureddetails_j_dw_minio_nanshan_json.address AS address, join_gp_insureddetails_j_dw_minio_nanshan_json.phone AS phone, join_gp_insureddetails_j_dw_minio_nanshan_json.email AS email, join_gp_insureddetails_j_dw_minio_nanshan_json.nationality AS nationality, join_gp_insureddetails_j_dw_minio_nanshan_json.maritalstatus AS maritalstatus, join_gp_insureddetails_j_dw_minio_nanshan_json.policyid AS policyid, join_gp_insureddetails_j_dw_minio_nanshan_json.insuredid AS insuredid, join_gp_insureddetails_j_dw_minio_nanshan_json.policynumber AS policynumber, join_gp_insureddetails_j_dw_minio_nanshan_json.policytype AS policytype, join_gp_insureddetails_j_dw_minio_nanshan_json.effectivedate AS effectivedate, join_gp_insureddetails_j_dw_minio_nanshan_json.expirydate AS expirydate, join_gp_insureddetails_j_dw_minio_nanshan_json.paymentstatus AS paymentstatus, join_gp_insureddetails_j_dw_minio_nanshan_json.coverageamount AS coverageamount, join_gp_insureddetails_j_dw_minio_nanshan_json.totalpremium AS totalpremium, join_gp_insureddetails_j_dw_minio_nanshan_json.insuranceproducts AS insuranceproducts, (getyear(localtimestamp())-getyear(dateofbirth)) AS age FROM join_gp_insureddetails_j_dw_minio_nanshan_json;
+
+ALTER VIEW p_join_gp_insureddetails_j_dw_minio_nanshan_json
+ LAYOUT (join_gp_insureddetails_j_dw_minio_nanshan_json = [20, 20, 200, 200]);
+
+ALTER VIEW p_join_gp_insureddetails_j_dw_minio_nanshan_json
+ CACHE FULL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

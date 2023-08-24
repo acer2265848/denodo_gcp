@@ -1,0 +1,5 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+UNDEPLOY IF EXISTS WEBSERVICE insureddetails;
+
+DEPLOY WEBSERVICE insureddetails LOGIN = '${databases.gcp_webcomm.webcontainer.webservices.insureddetails.LOGIN}' PASSWORD = '${databases.gcp_webcomm.webcontainer.webservices.insureddetails.PASSWORD}' ${databases.gcp_webcomm.webcontainer.webservices.insureddetails.PASSWORD.ENCRYPTED};
+

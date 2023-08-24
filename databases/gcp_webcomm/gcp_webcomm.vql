@@ -1,0 +1,13 @@
+﻿CREATE OR REPLACE DATABASE gcp_webcomm '';
+
+ALTER DATABASE gcp_webcomm
+  CHARSET DEFAULT;
+
+ALTER DATABASE gcp_webcomm
+  CACHE ON (
+    MAINTENANCE OFF
+    MAINTAINERPERIOD 21600
+    TIMETOLIVE 0
+    DATASOURCE gcp_greenplum_cache DATABASE gcp_webcomm
+  );
+

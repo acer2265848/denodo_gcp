@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE VIEW join_gp_insureddetails_j_ext_minio_nanshan_json FOLDER = '/02_base_view' AS SELECT insureddetails.insuredname AS insuredname, insureddetails.gender AS gender, insureddetails.dateofbirth AS dateofbirth, insureddetails.occupation AS occupation, insureddetails.address AS address, insureddetails.phone AS phone, insureddetails.email AS email, insureddetails.nationality AS nationality, insureddetails.maritalstatus AS maritalstatus, ext_minio_nanshan_json.policyid AS policyid, ext_minio_nanshan_json.insuredid AS insuredid, ext_minio_nanshan_json.policynumber AS policynumber, ext_minio_nanshan_json.policytype AS policytype, ext_minio_nanshan_json.effectivedate AS effectivedate, ext_minio_nanshan_json.expirydate AS expirydate, ext_minio_nanshan_json.paymentstatus AS paymentstatus, ext_minio_nanshan_json.coverageamount AS coverageamount, ext_minio_nanshan_json.totalpremium AS totalpremium, ext_minio_nanshan_json.insuranceproducts AS insuranceproducts FROM insureddetails AS insureddetails INNER JOIN ext_minio_nanshan_json AS ext_minio_nanshan_json ON insureddetails.insuredid = ext_minio_nanshan_json.insuredid ;
+
+ALTER VIEW join_gp_insureddetails_j_ext_minio_nanshan_json
+ LAYOUT (insureddetails = [266, 103, 200, 200], ext_minio_nanshan_json = [656, 103, 200, 200]);
+
+ALTER VIEW join_gp_insureddetails_j_ext_minio_nanshan_json
+ CACHE FULL
+     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

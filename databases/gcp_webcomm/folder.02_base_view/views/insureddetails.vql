@@ -1,0 +1,58 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC insureddetails
+    FOLDER = '/02_base_view'
+    DATASOURCENAME=gcp_pg
+    SCHEMANAME='${databases.gcp_webcomm.folder.02_base_view.views.jdbc.insureddetails.SCHEMANAME}' ESCAPE
+    RELATIONNAME='insureddetails' 
+    OUTPUTSCHEMA (
+        insuredid = 'insuredid' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        insuredname = 'insuredname' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gender = 'gender' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        dateofbirth = 'dateofbirth' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        occupation = 'occupation' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        address = 'address' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        phone = 'phone' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        email = 'email' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        nationality = 'nationality' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        maritalstatus = 'maritalstatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  SORTABLE
+    )
+    CONSTRAINT 'insureddetails_pkey' PRIMARY KEY ( 'insuredid' )
+    INDEX 'insureddetails_pkey' OTHER UNIQUE PRIMARY ( 'insuredid' );
+
+CREATE OR REPLACE TABLE insureddetails I18N us_est (
+        insuredid:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuredname:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        gender:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        dateofbirth:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        occupation:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        address:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        phone:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        email:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        nationality:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        maritalstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20')
+    )
+    FOLDER = '/02_base_view'
+    CONSTRAINT 'insureddetails_pkey' PRIMARY KEY ( 'insuredid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD insureddetails(
+        I18N us_est
+        CONSTRAINTS (
+             ADD insuredid (any) OPT ANY
+             ADD insuredname (any) OPT ANY
+             ADD gender (any) OPT ANY
+             ADD dateofbirth (any) OPT ANY
+             ADD occupation (any) OPT ANY
+             ADD address (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD nationality (any) OPT ANY
+             ADD maritalstatus (any) OPT ANY
+        )
+        OUTPUTLIST (address, dateofbirth, email, gender, insuredid, insuredname, maritalstatus, nationality, occupation, phone
+        )
+        WRAPPER (jdbc insureddetails)
+    )
+    DECLARE VIEW CLUSTER INDEX maritalstatus_index ON (maritalstatus);
+

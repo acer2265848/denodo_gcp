@@ -1,0 +1,57 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC policydetails
+    FOLDER = '/02_base_view'
+    DATASOURCENAME=gcp_pg
+    SCHEMANAME='${databases.gcp_webcomm.folder.02_base_view.views.jdbc.policydetails.SCHEMANAME}' ESCAPE
+    RELATIONNAME='policydetails' 
+    OUTPUTSCHEMA (
+        policyid = 'policyid' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        insuredid = 'insuredid' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        policynumber = 'policynumber' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        policytype = 'policytype' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        effectivedate = 'effectivedate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        expirydate = 'expirydate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        paymentstatus = 'paymentstatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        coverageamount = 'coverageamount' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        totalpremium = 'totalpremium' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        insuranceproducts = 'insuranceproducts' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE
+    )
+    CONSTRAINT 'policydetails_pkey' PRIMARY KEY ( 'insuredid' )
+    INDEX 'policydetails_pkey' OTHER UNIQUE PRIMARY ( 'insuredid' );
+
+CREATE OR REPLACE TABLE policydetails I18N us_est (
+        policyid:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuredid:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policynumber:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policytype:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        effectivedate:localdate (sourcetypeid = '91', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        expirydate:localdate (sourcetypeid = '91', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        paymentstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        coverageamount:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        totalpremium:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuranceproducts:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/02_base_view'
+    CONSTRAINT 'policydetails_pkey' PRIMARY KEY ( 'insuredid' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD policydetails(
+        I18N us_est
+        CONSTRAINTS (
+             ADD policyid (any) OPT ANY
+             ADD insuredid (any) OPT ANY
+             ADD policynumber (any) OPT ANY
+             ADD policytype (any) OPT ANY
+             ADD effectivedate (any) OPT ANY
+             ADD expirydate (any) OPT ANY
+             ADD paymentstatus (any) OPT ANY
+             ADD coverageamount (any) OPT ANY
+             ADD totalpremium (any) OPT ANY
+             ADD insuranceproducts (any) OPT ANY
+        )
+        OUTPUTLIST (coverageamount, effectivedate, expirydate, insuranceproducts, insuredid, paymentstatus, policyid, policynumber, policytype, totalpremium
+        )
+        WRAPPER (jdbc policydetails)
+    );
+

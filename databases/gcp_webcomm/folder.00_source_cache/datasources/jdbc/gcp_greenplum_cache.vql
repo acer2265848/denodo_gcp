@@ -1,0 +1,38 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC gcp_greenplum_cache
+    FOLDER = '/00_source_cache'
+    DRIVERCLASSNAME = 'org.postgresql.Driver'
+    DATABASEURI = '${databases.gcp_webcomm.folder.00_source_cache.datasources.jdbc.gcp_greenplum_cache.DATABASEURI}'
+    USERNAME = '${databases.gcp_webcomm.folder.00_source_cache.datasources.jdbc.gcp_greenplum_cache.USERNAME}'
+    USERPASSWORD = '${databases.gcp_webcomm.folder.00_source_cache.datasources.jdbc.gcp_greenplum_cache.USERPASSWORD}' ${databases.gcp_webcomm.folder.00_source_cache.datasources.jdbc.gcp_greenplum_cache.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'postgresql-9'
+    DATABASENAME = 'postgresql'
+    DATABASEVERSION = '9'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    KERBEROSPROPERTIES ('jaasLogin'='false', 'user'='<user>')
+    DATA_LOAD_CONFIGURATION (
+        USE_FOR_QUERY_OPTIMIZATION = DATA_MOVEMENT
+        BATCHINSERTSIZE = 200
+        BULK_LOAD_CONFIGURATION (
+            POSTGRESQL_EXECUTABLES_LOCATION = '/usr/pgsql-13/bin/psql'
+        )
+        USEEXTERNALTABLES ( 
+            ONMOVEREAD = false,
+            ONMOVEWRITE = true
+        )
+    );
+

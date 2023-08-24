@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE FOLDER '/00_source_cache' ;
+

@@ -1,0 +1,3 @@
+﻿/databases/gcp_webcomm/folder.02_base_view/02_base_view.vql
+/databases/gcp_webcomm/folder.01_source/01_source.vql
+/databases/gcp_webcomm/folder.01_source/datasources/jdbc/gcp_pg.vql

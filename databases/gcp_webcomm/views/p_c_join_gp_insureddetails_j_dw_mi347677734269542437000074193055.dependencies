@@ -1,0 +1,3 @@
+﻿/databases/gcp_webcomm/folder.00_source_cache/00_source_cache.vql
+/databases/gcp_webcomm/folder.00_source_cache/datasources/jdbc/gcp_greenplum_cache.vql
+/databases/gcp_webcomm/views/c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055.vql

@@ -1,0 +1,86 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055
+    DATASOURCENAME=gcp_greenplum_cache
+    SCHEMANAME='${databases.gcp_webcomm.views.jdbc.c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055.SCHEMANAME}' ESCAPE
+    RELATIONNAME='c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055' 
+    OUTPUTSCHEMA (
+        insuredname = 'insuredname' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gender = 'gender' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        dateofbirth = 'dateofbirth' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        occupation = 'occupation' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        address = 'address' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        phone = 'phone' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        email = 'email' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        nationality = 'nationality' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        maritalstatus = 'maritalstatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        policyid = 'policyid' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        insuredid = 'insuredid' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        policynumber = 'policynumber' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        policytype = 'policytype' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        effectivedate = 'effectivedate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        expirydate = 'expirydate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  SORTABLE,
+        paymentstatus = 'paymentstatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        coverageamount = 'coverageamount' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        totalpremium = 'totalpremium' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        insuranceproducts = 'insuranceproducts' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        expirationdate = 'expirationdate' :'java.math.BigDecimal' (OPT) (sourcetyperadix='10', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        rowstatus = 'rowstatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='255', sourcetypeid='12', sourcetypename='varchar')  SORTABLE
+    )
+    INDEX 'c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055_' OTHER ( 'dateofbirth' );
+
+CREATE OR REPLACE TABLE c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055 I18N us_est (
+        insuredname:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        gender:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        dateofbirth:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        occupation:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        address:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        phone:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        email:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        nationality:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        maritalstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        policyid:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuredid:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policynumber:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        policytype:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        effectivedate:localdate (sourcetypeid = '91', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        expirydate:localdate (sourcetypeid = '91', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        paymentstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        coverageamount:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        totalpremium:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        insuranceproducts:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        expirationdate:decimal (sourcetypeid = '2', sourcetyperadix = '10'),
+        rowstatus:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '255')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055(
+        I18N us_est
+        CONSTRAINTS (
+             ADD insuredname (any) OPT ANY
+             ADD gender (any) OPT ANY
+             ADD dateofbirth (any) OPT ANY
+             ADD occupation (any) OPT ANY
+             ADD address (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD nationality (any) OPT ANY
+             ADD maritalstatus (any) OPT ANY
+             ADD policyid (any) OPT ANY
+             ADD insuredid (any) OPT ANY
+             ADD policynumber (any) OPT ANY
+             ADD policytype (any) OPT ANY
+             ADD effectivedate (any) OPT ANY
+             ADD expirydate (any) OPT ANY
+             ADD paymentstatus (any) OPT ANY
+             ADD coverageamount (any) OPT ANY
+             ADD totalpremium (any) OPT ANY
+             ADD insuranceproducts (any) OPT ANY
+             ADD expirationdate (any) OPT ANY
+             ADD rowstatus (any) OPT ANY
+        )
+        OUTPUTLIST (address, coverageamount, dateofbirth, effectivedate, email, expirationdate, expirydate, gender, insuranceproducts, insuredid, insuredname, maritalstatus, nationality, occupation, paymentstatus, phone, policyid, policynumber, policytype, rowstatus, totalpremium
+        )
+        WRAPPER (jdbc c_join_gp_insureddetails_j_dw_mi347677734269542437000074193055)
+    )
+    DECLARE VIEW CLUSTER INDEX insuredid_index ON (insuredid);
+
